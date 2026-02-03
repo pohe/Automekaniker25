@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Interfaces
 {
-    internal interface IOrderLine
+    public interface IOrderLine
     {
+        int Amount { get; set; }
+        string Comment { get; set; }
+        int Id { get; }
+        IMenuItem MenuItem { get; }
+        void AddExtraAccessory(IAccessory accessory);
+        double SubTotal();
+        string ToString();
+
     }
 }

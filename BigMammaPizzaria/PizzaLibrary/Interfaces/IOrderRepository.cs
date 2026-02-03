@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Interfaces
 {
-    internal interface IOrderRepository
+    public interface IOrderRepository
     {
+        int Count { get; }
+        List<IOrder> GetAll();
+        void AddOrder(IOrder order);
+        IOrder GetOrderById(int id);
+        void RemoveOrder(int id);
+        void PrintAllOrder();
+
     }
 }

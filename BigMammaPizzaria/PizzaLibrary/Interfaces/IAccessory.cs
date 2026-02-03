@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Interfaces
 {
-    internal interface IAccessory
+    public interface IAccessory
     {
+        int Id { get; }
+        string Name { get; }
+        double Price { get; }
+        string ToString();
     }
 }

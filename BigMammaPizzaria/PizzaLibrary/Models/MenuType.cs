@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Models
 {
-    internal class MenuType
+    public enum MenuType
     {
+        SANDWICHES, BRUCHETTA_CROSTINO, SALATER, PIZZECLASSSICHE, PIZZESPECIALI, PASTAALFORNO, TILBEHØR
     }
 }

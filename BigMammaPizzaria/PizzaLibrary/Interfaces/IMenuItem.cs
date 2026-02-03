@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PizzaLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,15 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Interfaces
 {
-    internal interface IMenuItem
+    public interface IMenuItem
     {
+        string Description { get; set; }
+        string Name { get; set; }
+        int No { get; }
+        double Price { get; set; }
+        MenuType TheMenuType { get; set; }
+
+        string ToString();
+
     }
 }

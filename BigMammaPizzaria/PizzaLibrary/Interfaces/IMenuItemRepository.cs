@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace PizzaLibrary.Interfaces
 {
-    internal interface IMenuItemRepository
+    public interface IMenuItemRepository
     {
+        int Count { get; }
+        List<IMenuItem> GetAll();
+        void AddMenuItem(IMenuItem menuItem);
+        IMenuItem GetMenuItemByNo(int no);
+        void RemoveMenuItem(int no);
+        void PrintAllMenuItems();
+        List<IMenuItem> FilterMenuItems(string filterCriteria);
+        void UpdateMenuItem(int no, string name, string description, double price, IMenuType upDatedMenuType);
     }
 }

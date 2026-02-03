@@ -1,0 +1,51 @@
+﻿@page
+@model RazorBoatApp2026F.Pages.Boats.IndexModel
+@{
+    ViewData["Title"] = "List Boats";
+}
+
+<h1>List of boats</h1>
+
+<p>
+    <a asp-page="CreateBoat">Create a new boat</a>
+</p>
+
+<form>
+    search: <input type="text" asp-for="@Model.FilterCriteria"  />
+    <input type="submit" value="Filter" />
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>BoatType</th>
+            <th>Model</th>
+            <th>SailNumber</th>
+            <th>EngineInfo</th>
+            <th>Draft</th>
+            <th>Width</th>
+            <th>Length</th>
+            <th>YearOfConstruction</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Boats)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TheBoatType</td>
+                <td>@item.Model</td>
+                <td>@item.SailNumber</td>
+                <td>@item.EngineInfo</td>
+                <td>@item.Draft</td>
+                <td>@item.Width</td>
+                <td>@item.Length</td>
+                <td>@item.YearOfConstruction</td>
+                <td><a asp-page="EditBoat" asp-route-SailNumber="@item.SailNumber">Edit</a></td>
+                <td><a asp-page="DeleteBoat" asp-route-SailNumber="@item.SailNumber">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
