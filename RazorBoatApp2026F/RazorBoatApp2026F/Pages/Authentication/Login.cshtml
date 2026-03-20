@@ -1,0 +1,25 @@
+﻿@page
+@model RazorBoatApp2026F.Pages.Authentication.LoginModel
+@{
+    ViewData["Title"] = "Login page";
+}
+<h3>Login form</h3>
+
+<form method="post">
+    <table>
+        <tr>
+            <td>UserName  (email - ph@gmail.com/ch2gmail.com)</td>
+            <td><Input type="text" asp-for="@Model.UserName" /></td>
+        </tr>
+        <tr>
+            <td>Password (123)</td>
+            <td><Input type="password" asp-for="@Model.PassWord" /> </td>
+        </tr>
+        <tr>
+            <td>&nbsp</td>
+            <td><Input type="submit" value="Login" /></td>
+        </tr>
+    </table>
+
+</form>
+<a asp-page="/Members/CreateMember">Create a new member</a>

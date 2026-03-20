@@ -1,4 +1,5 @@
 ﻿@page
+@using SailClubLibrary.Models
 @model RazorBoatApp2026F.Pages.Members.IndexModel
 @{
     ViewData["Title"] = "List Members";
@@ -10,43 +11,100 @@
     <a asp-page="CreateMember">Create a new member</a>
 </p>
 
-<form>
+<form method="get">
     search: <input type="text" asp-for="@Model.FilterCriteria" />
+    <select asp-for="@Model.FilterBy" class="form-select d-inline-block" style="width:auto; margin-left:8px;">
+        <option value="All">All</option>
+        <option value="FirstName">FirstName</option>
+        <option value="SurName">SurName</option>
+        <option value="PhoneNumber">PhoneNumber</option>
+        <option value="Mail">Mail</option>
+        <option value="City">City</option>
+    </select>
+
+    @* <label class="ms-3 me-2">Member type:</label>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="SelectedMemberType" id="membertype_all" value="" @(Model.SelectedMemberType == null ? "checked" : "") />
+        <label class="form-check-label" for="membertype_all">All</label>
+    </div>
+
+    @foreach (MemberType t in Enum.GetValues(typeof(MemberType)))
+    {
+        var id = $"membertype_{t}";
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="SelectedMemberType" id="@id" value="@t" @(Model.SelectedMemberType == t ? "checked" : "") />
+            <label class="form-check-label" for="@id">@t</label>
+        </div>
+    } *@
+
+
+
+    <br />
+    <!-- All -->
+    <input type="radio"
+           asp-for="SelectedMemberType"
+           value=""
+           checked="@(Model.SelectedMemberType == null)" />
+    <label>All</label>
+
+    <br />
+
+    <!-- Enum values -->
+    @foreach (var type in Enum.GetValues<MemberType>())
+    {
+        <input type="radio"
+               asp-for="SelectedMemberType"
+               value="@type" />
+        <label>@type</label>
+
+        <br />
+    }
+
+
+
     <input type="submit" value="Filter" />
 </form>
 
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>FirstName</th>
-            <th>SurName</th>
-            <th>Mail</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>Phonenumber</th>
-            <th>Role</th>
-            <th>Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Members)
-        {
+@if (Model.Members?.Count == 0)
+{
+    <p>Ingen resultater</p>
+}
+else
+{
+    <table class="table">
+        <thead>
             <tr>
-                <td>@item.Id</td>
-                <td>@item.FirstName</td>
-                <td>@item.SurName</td>
-                <td>@item.Mail</td>
-                <td>@item.Address</td>
-                <td>@item.City</td>
-                <td>@item.PhoneNumber</td>
-                <td>@item.TheMemberRole</td>
-                <td>@item.TheMemberType</td>
-                <td><a asp-page="UpdateMember" asp-route-phoneNumber="@item.PhoneNumber">Edit</a></td>
-                <td><a asp-page="DeleteMember" asp-route-phoneNumber="@item.PhoneNumber">Delete</a></td>
+                <th>ID</th>
+                <th>FirstName</th>
+                <th>SurName</th>
+                <th>Mail</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Phonenumber</th>
+                <th>Role</th>
+                <th>Type</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Members)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.SurName</td>
+                    <td>@item.Mail</td>
+                    <td>@item.Address</td>
+                    <td>@item.City</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.TheMemberRole</td>
+                    <td>@item.TheMemberType</td>
+                    <td><a asp-page="UpdateMember" asp-route-phoneNumber="@item.PhoneNumber">Edit</a></td>
+                    <td><a asp-page="DeleteMember" asp-route-phoneNumber="@item.PhoneNumber">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
 

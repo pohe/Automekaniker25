@@ -1,0 +1,45 @@
+﻿@page
+@model RazorBoatApp2026F.Pages.Bookings.IndexModel
+@{
+    ViewData["Title"] = "List of Bookings";
+}
+
+<h1>List of Bookings</h1>
+
+<h1>Numer of bookings @Model.Bookings.Count</h1>
+
+<form method="get">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>SailNumber</th>
+                <th>BoatType</th>
+                <th>Member name</th>
+                <th>StartDate</th>
+                <th>EndDate</th>
+                <th>SailCompleted</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Bookings)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.TheBoat.SailNumber</td>
+                    <td>@item.TheBoat.TheBoatType</td>
+                    <td>@item.TheMember.FirstName  @item.TheMember.SurName </td>
+                    <td>@item.StartDate</td>
+                    <td>@item.EndDate</td>
+                    <td>
+                        @(item.SailCompleted ? 
+                            "Sejlads er gennemført"
+                            : "Sejlads er ikke afsluttet")
+                     </td>
+                    <td><a asp-page="UpdateBooking" asp-route-id="@item.Id">Update</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

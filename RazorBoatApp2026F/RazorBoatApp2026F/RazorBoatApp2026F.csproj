@@ -10,4 +10,9 @@
     <ProjectReference Include="..\SailClubLibrary\SailClubLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Statistics\" />
+    <Folder Include="wwwroot\images\memberimages\" />
+  </ItemGroup>
+
 </Project>

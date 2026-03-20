@@ -1,0 +1,38 @@
+﻿@page
+@model RazorBoatApp2026F.Pages.Bookings.ChooseBoatModel
+@{
+    ViewData["Title"] = "Choose Boat";
+}
+<p>
+    <a asp-page="index">All bookings</a>
+</p>
+
+<h1>Choose a boats</h1>
+
+<h2>Book a boat you can choose between @Model.Boats.Count boat</h2>
+<h3>The date today is @DateTime.Now</h3>
+<form method="get">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>BoatType</th>
+                <th>Model</th>
+                <th>SailNumber</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Boats)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.TheBoatType</td>
+                    <td>@item.Model</td>
+                    <td>@item.SailNumber</td>
+                    <td><a asp-page="CreateBooking" asp-route-sailNumber="@item.SailNumber">Book</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

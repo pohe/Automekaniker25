@@ -27,8 +27,11 @@ namespace SailClubLibrary.Services
         public BoatRepository()
         {
             //_boats = [];
-            _boats = MockData.BoatData;
+            _boats = new MockData().BoatData;
         }
+
+        
+
         #endregion
 
         #region Methods
@@ -43,7 +46,7 @@ namespace SailClubLibrary.Services
                 Console.WriteLine($"Båden med sejlnummeret {boat.SailNumber} er blevet tilføjet til listen");
                 return;
             }
-            throw new BoatSailnumberExistsException($"Båden med sejlnummeret {boat.SailNumber} findes allerede.");
+           throw new BoatSailnumberExistsException($"Boat med sejlnummeret {boat.SailNumber} findes allerede.");
         }
 
         /// <summary>

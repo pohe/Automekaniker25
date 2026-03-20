@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="~/RazorBoatApp2026F.styles.css" asp-append-version="true" />
 </head>
 <body>
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewData["ErrorMessage"]");
+            };
+        </script>
+        ViewData["ErrorMessage"] = null;
+    }
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
@@ -29,10 +38,35 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Members/index">Members</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Bookings/ChooseBoat">Booking</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
                     </ul>
                 </div>
+                @using Microsoft.AspNetCore.Http;
+                @inject IHttpContextAccessor HttpContextAccessor
+                @if (HttpContextAccessor.HttpContext.Session.GetString("Email") == null)
+                {
+                    <a class="btn btn-success rounded-pill" asp-area="" asp-page="/Authentication/Login">
+                        <span class="text-light">Log ind</span>
+                    </a>
+                }
+                else
+                {
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-outline-success rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
+                            @HttpContextAccessor.HttpContext.Session.GetString("Email")
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-page="/Members/Index" class="dropdown-item">Min info</a></li>
+                            <li><a asp-area="" asp-page="/Members/UpdateMember" class="dropdown-item">Opdater</a></li>
+                            <li><hr class="dropdown-divider"></hr></li>
+                            <li><a asp-area="" asp-page="/Authentication/Login" asp-page-handler="Logout" class="dropdown-item">Log ud</a></li>
+                        </ul>
+                    </div>
+                }
             </div>
         </nav>
     </header>

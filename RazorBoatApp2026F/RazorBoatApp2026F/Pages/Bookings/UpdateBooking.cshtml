@@ -1,4 +1,72 @@
 ﻿@page
 @model RazorBoatApp2026F.Pages.Bookings.UpdateBookingModel
 @{
+    ViewData["Title"] = "Update booking";
 }
+
+<h1>Update booking</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.Id" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.Id" readonly class="form-control" />
+
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.TheBoat.SailNumber" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.TheBoat.SailNumber" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.TheMember.PhoneNumber" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.TheMember.PhoneNumber" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.TheMember.FirstName" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.TheMember.FirstName" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.TheMember.SurName" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.TheMember.SurName" readonly class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.StartDate" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.StartDate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.EndDate" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.EndDate" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.Destination" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.Destination" class="form-control" />
+    </div>
+
+   @*  <div class="form-group">
+        <label asp-for="@Model.BookingToUpdate.SailCompleted" class="control-label"></label>
+        <input asp-for="@Model.BookingToUpdate.SailCompleted" class="form-control" />
+    </div> *@
+    <div class="form-group">
+        <label>Sail completed?</label><br />
+
+        <input asp-for="@Model.BookingToUpdate.SailCompleted"
+               type="radio"
+               value="true" class="form-check-input" /> Ja
+
+        <input asp-for="@Model.BookingToUpdate.SailCompleted"
+               type="radio"
+               value="false" class="form-check-input" /> Nej
+    </div>
+    
+    <div class="form-group">
+        <input type="submit" value="Update a booking" asp-page-handler="Update" class="btn btn-primary" />
+        <input type="submit" value="Delete a booking" asp-page-handler="Delete" class="btn btn-primary" />
+    </div>
+</form>

@@ -17,5 +17,6 @@ namespace SailClubLibrary.Interfaces
         void PrintAll();
         Member? SearchMember(string phoneNumber);
         List<Member> FilterMembers(string filterCriteria);
+        public Member VerifyUserAsync(string email, string passWord);
     }
 }

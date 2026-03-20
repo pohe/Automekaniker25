@@ -10,24 +10,34 @@
     <a asp-page="CreateBoat">Create a new boat</a>
 </p>
 
-<form>
+<form method="get">
     search: <input type="text" asp-for="@Model.FilterCriteria"  />
     <input type="submit" value="Filter" />
+
 </form>
 
-
+<form method="get">
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
+            @* <th>ID</th> *@
+            <th>
+                    <button type="submit" class="btn btn-link" name="SortBy" Value="ID" >ID</button>
+            </th>
             <th>BoatType</th>
             <th>Model</th>
-            <th>SailNumber</th>
+            @* <th>SailNumber</th> *@
+            <th>
+                    <button type="submit" class="btn btn-link" name="SortBy" Value="SailNumber" @* asp-route-sorting="true" *@>SailNumber</button>
+            </th>
             <th>EngineInfo</th>
             <th>Draft</th>
             <th>Width</th>
             <th>Length</th>
-            <th>YearOfConstruction</th>
+            @* <th>YearOfConstruction</th> *@
+            <th>
+                    <button type="submit" class="btn btn-link" name="SortBy" Value="YearOfConstruction" @* asp-route-sorting="true" *@>YearOfConstruction</button>
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -49,3 +59,4 @@
         }
     </tbody>
 </table>
+</form>

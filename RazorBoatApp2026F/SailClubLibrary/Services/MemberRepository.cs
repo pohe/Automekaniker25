@@ -139,6 +139,20 @@ namespace SailClubLibrary.Services
             }
             return filteredMembers;
         }
+
+        public Member VerifyUserAsync(string email, string passWord)
+        {
+            MemberRepository mRepo = new MemberRepository();
+            foreach (Member m in mRepo.GetAllMembers())
+            {
+                if (m.Mail == email && passWord == "123")
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
         #endregion
     }
 }

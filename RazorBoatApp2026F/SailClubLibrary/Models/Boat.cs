@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,16 +10,21 @@ namespace SailClubLibrary.Models
     /// <summary>
     /// Generic Class for Constructing Boat Objects using the interface
     /// </summary>
-    public class Boat
+    public class Boat:IComparable<Boat>
     {
         #region Instance Fields
-        
+
         #endregion
 
         #region Properties
+        [Required(ErrorMessage = "Id is required")]
         public int Id { get; set; }
+
+        [Display(Name = "Boat type")]
         public BoatType TheBoatType { get; set; }
         public string Model { get; set; }
+        
+        [Required]
         public string SailNumber { get; set; }
         public string EngineInfo { get; set; }
         public double Draft { get; set; }
@@ -63,6 +69,16 @@ namespace SailClubLibrary.Models
                 $"\nDimensioner... " +
                 $"\nDybgang: {Draft}, Bredde: {Width}, Længde: {Length}" );
         }
+
+        public int CompareTo(Boat? other)
+        {
+            if (other == null) return 1;
+            if (Id > other.Id) return 1;
+            if (Id < other.Id) return -1;
+            return 0;
+        }
+
+
         #endregion
 
     }

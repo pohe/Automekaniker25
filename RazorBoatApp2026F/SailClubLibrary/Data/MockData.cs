@@ -13,11 +13,11 @@ namespace SailClubLibrary.Data
         private static Dictionary<string, Member> _memberData =
             new Dictionary<string, Member>()
             {
-            { "23456789", new Member(1, "Peter","Jensen","23456789","Gaden 1","Hillerød","PH@gamil.com",MemberType.Senior,MemberRole.Member) },
+            { "23456789", new Member(1, "Peter","Jensen","23456789","Gaden 1","Hillerød","ph@gmail.com",MemberType.Senior,MemberRole.Member) },
              { "65345890", new Member(2, "Charlotte","Hansen","65345890","Street 1","Roskilde","ch@gamil.com",MemberType.Adult,MemberRole.Admin) },
             };
 
-        private static Dictionary<string, Boat> _boatData =
+        private  Dictionary<string, Boat> _boatData =
               new Dictionary<string, Boat>()
               {
             { "16-3335", new Boat(1, BoatType.TERA, "Model", "16-3335", "Is very good :3", 32, 23, 33, "1982")},
@@ -31,7 +31,7 @@ namespace SailClubLibrary.Data
         {
             get { return _memberData; }
         }
-        public static Dictionary<string, Boat> BoatData
+        public  Dictionary<string, Boat> BoatData
         {
             get { return _boatData; }
         }

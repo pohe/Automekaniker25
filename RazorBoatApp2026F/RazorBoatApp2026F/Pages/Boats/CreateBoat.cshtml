@@ -1,13 +1,15 @@
 ﻿@page
 @using SailClubLibrary.Models
 @model RazorBoatApp2026F.Pages.Boats.CreateBoatModel
+
 <h1>Create boat</h1>
 
 <form method="post" enctype="multipart/form-data">
-
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="@Model.NewBoat.Id" class="control-label"></label>
         <input asp-for="@Model.NewBoat.Id" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.Id" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -18,6 +20,7 @@
     <div class="form-group">
         <label asp-for="@Model.NewBoat.SailNumber" class="control-label"></label>
         <input asp-for="@Model.NewBoat.SailNumber" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.SailNumber" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -29,30 +32,35 @@
     <div class="form-group">
         <label asp-for="@Model.NewBoat.EngineInfo" class="control-label"></label>
         <input asp-for="@Model.NewBoat.EngineInfo" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.EngineInfo" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="@Model.NewBoat.Draft" class="control-label"></label>
         <input asp-for="@Model.NewBoat.Draft" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.Draft" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="@Model.NewBoat.Width" class="control-label"></label>
         <input asp-for="@Model.NewBoat.Width" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.Width" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="@Model.NewBoat.Length" class="control-label"></label>
         <input asp-for="@Model.NewBoat.Length" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.Length" class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label asp-for="@Model.NewBoat.YearOfConstruction" class="control-label"></label>
         <input asp-for="@Model.NewBoat.YearOfConstruction" class="form-control" />
+        <span asp-validation-for="@Model.NewBoat.YearOfConstruction" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <input type="submit" value="Create a event" class="btn btn-primary" />
+        <input type="submit" value="Create a boat" class="btn btn-primary" />
     </div>
 </form>
 
